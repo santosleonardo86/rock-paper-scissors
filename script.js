@@ -18,10 +18,11 @@ function getComputerChoice() {
 
 function game() {
   for (let i = 0; i < 5; i++) {
-    console.log(i + 1);
+    let cont = i + 1;
+    console.log(cont);
 
     function playRound(playerSelection, computerSelection) {
-      playerSelection = prompt('Rock, Paper, Scissors: ');
+      playerSelection = prompt(`Rock, Paper, Scissors (rodada ${cont}/5): `);
 
       let lowerCaseString = playerSelection.toLowerCase(); //the lower case problem
       let upperCaseString = playerSelection.toUpperCase(); //THE UPPER CASE PROBLEM.
