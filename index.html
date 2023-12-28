@@ -4,10 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>Rock, Paper, Scissors</title>
 </head>
 
 <body>
+  <div class="container">
+    <div class="ctn">
+      <section class="buttons">
+
+        <button id="rock">
+          <i class="fa-regular fa-hand-back-fist rock"></i>
+          <p>Rock</p>
+        </button>
+
+        <button id="paper">
+          <i class="fa-regular fa-hand"></i>
+          <p>Paper</p>
+        </button>
+
+        <button id="scissors">
+          <i class="fa-regular fa-hand-scissors scissors"></i>
+          <p>Scissors</p>
+        </button>
+
+      </section>
+    </div>
+
+    <div class="ctn2">
+      <section>
+        <div id="selections"></div>
+        <div id="results"></div>
+        <div id="score"></div>
+        <div id="winner"></div>
+      </section>
+    </div>
+  </div>
 
 
   <script src="./script.js"></script>

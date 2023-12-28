@@ -17,52 +17,108 @@ function getComputerChoice() {
 }
 
 function game() {
+  const rock = document.querySelector('#rock');
+  const paper = document.querySelector('#paper');
+  const scissors = document.querySelector('#scissors');
+  const selections = document.querySelector('#selections')
+  const results = document.querySelector('#results');
+  const score = document.querySelector('#score');
+  const winner = document.querySelector('#winner');
+  const ctn2 = document.querySelector('.ctn2')
+
+  rock.addEventListener('click', () => playRound('Rock'))
+  paper.addEventListener('click', () => playRound('Paper'))
+  scissors.addEventListener('click', () => playRound('Scissors'))
+
+
   for (let i = 0; i < 5; i++) {
-    let cont = i + 1;
-    console.log(cont);
+    let round = 0;
+    let pScore = 0;
+    let cScore = 0;
 
     function playRound(playerSelection, computerSelection) {
-      playerSelection = prompt(`Rock, Paper, Scissors (rodada ${cont}/5): `);
-
-      let lowerCaseString = playerSelection.toLowerCase(); //the lower case problem
-      let upperCaseString = playerSelection.toUpperCase(); //THE UPPER CASE PROBLEM.
-      let slicedString = upperCaseString.slice(0, 1); //T
-      let slicedString2 = lowerCaseString.slice(1); //he uppercase problem.
-      let concatString = slicedString + slicedString2;
-
-      playerSelection = concatString;
       computerSelection = getComputerChoice();
 
+      const selectionsString = `Your selection: <strong>${playerSelection}</strong> | Computer selection: <strong>${computerSelection}</strong>`;
+      // const scoreString = `You ${pScore} x ${cScore} Computer`;
+
       if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
-        console.log(`Your selection: ${playerSelection}`);
-        return "Result: You Win! Rock beats Scissors";
+        round++;
+        selections.innerHTML = selectionsString;
+        results.innerHTML = `Round ${round}: <strong>You Win!</strong> Rock beats Scissors.`;
+        pScore++;
+        score.innerHTML = `You ${pScore} x ${cScore} Computer`;
       }
       else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
-        console.log(`Your selection: ${playerSelection}`);
-        return "Result: You Win! Paper beats Rock";
+        round++;
+        selections.innerHTML = selectionsString;
+        results.innerHTML = `Round ${round}: <strong>You Win!</strong> Paper beats Rock.`;
+        pScore++;
+        score.innerHTML = `You ${pScore} x ${cScore} Computer`;
       }
       else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
-        console.log(`Your selection: ${playerSelection}`);
-        return "Result: You Win! Scissors beats Paper";
+        round++;
+        selections.innerHTML = selectionsString;
+        results.innerHTML = `Round ${round}: <strong>You Win!</strong> Scissors beats Paper.`;
+        pScore++;
+        score.innerHTML = `You ${pScore} x ${cScore} Computer`;
       }
       else if (playerSelection == 'Rock' && computerSelection == 'Paper') {
-        console.log(`Your selection: ${playerSelection}`);
-        return "Result: You Lose! Paper beats Rock";
+        round++;
+        selections.innerHTML = selectionsString;
+        results.innerHTML = `Round ${round}: <strong>You Lose!</strong> Paper beats Rock.`;
+        cScore++;
+        score.innerHTML = `You ${pScore} x ${cScore} Computer`;
       }
       else if (playerSelection == 'Paper' && computerSelection == 'Scissors') {
-        console.log(`Your selection: ${playerSelection}`);
-        return "Result: You Lose! Scissors beats Paper";
+        round++;
+        selections.innerHTML = selectionsString;
+        results.innerHTML = `Round ${round}: <strong>You Lose!</strong> Scissors beats Paper.`;
+        cScore++;
+        score.innerHTML = `You ${pScore} x ${cScore} Computer`;
       }
       else if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
-        console.log(`Your selection: ${playerSelection}`);
-        return "Result: You Lose! Rock beats Scissors";
+        round++;
+        selections.innerHTML = selectionsString;
+        results.innerHTML = `Round ${round}: <strong>You Lose!</strong> Rock beats Scissors.`;
+        cScore++;
+        score.innerHTML = `You ${pScore} x ${cScore} Computer`;
       }
       else {
-        console.log(`Your selection: ${playerSelection}`);
-        return `Result: Tie! ${playerSelection} and ${computerSelection} are equal.`;
+        round++;
+        selections.innerHTML = selectionsString;
+        results.innerHTML = `Round ${round}: <strong>Tie!</strong> ${playerSelection} and ${computerSelection} are equal.`;
+        score.innerHTML = `You ${pScore} x ${cScore} Computer`;
+      }
+
+      let reload = document.createElement('button')
+      reload.setAttribute('id', 'reload')
+
+      if (pScore === 5) {
+        winner.textContent = 'You win!'
+        rock.setAttribute('disabled', '')
+        paper.setAttribute('disabled', '')
+        scissors.setAttribute('disabled', '')
+        rock.style.cursor = "default"
+        paper.style.cursor = "default"
+        scissors.style.cursor = "default"
+        ctn2.appendChild(reload);
+        reload.innerText = 'Play again'
+        reload.addEventListener('click', () => location.reload())
+
+      } else if (cScore === 5) {
+        winner.textContent = 'Computer wins!'
+        rock.setAttribute('disabled', '')
+        paper.setAttribute('disabled', '')
+        scissors.setAttribute('disabled', '')
+        rock.style.cursor = "default"
+        paper.style.cursor = "default"
+        scissors.style.cursor = "default"
+        ctn2.appendChild(reload);
+        reload.innerText = 'Play again'
+        reload.addEventListener('click', () => location.reload())
       }
     }
-    console.log(playRound());
   }
 }
 
